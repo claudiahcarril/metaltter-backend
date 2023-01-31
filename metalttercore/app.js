@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 // Connecting to Mongoose
 require('./lib/connectMongoose')
+require('./routes/api/mets')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
