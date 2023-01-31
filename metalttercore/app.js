@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 // Connecting to Mongoose
-// require('.lib/connectMongoose')
+require('./lib/connectMongoose')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
