@@ -8,8 +8,13 @@ var createError = require('http-errors')
 const router = express.Router()
 
 
-router.get('/', (req, res, next) => {
-    res.json({})
+router.get('/', async (req, res, next) => {
+    try {
+        const users = await User.find()
+        res.json({ results: users })
+    } catch(err) {
+        next(err)
+    }
 })
 
 // GET -> /api/users/:id
@@ -44,7 +49,7 @@ router.put('/:id', async(req, res, next) => {
 router.post('/', async(req, res, next) => {
     try {
         const userData = req.body
-        const user = new Met(userData)
+        const user = new User(userData)
         const userSaved = await user.save()
         res.json({ result: userSaved })
 
