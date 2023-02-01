@@ -8,6 +8,15 @@ var createError = require('http-errors')
 const router = express.Router()
 
 
-Met.find((err, mets) => {
-    console.log(mets)
+router.get('/', async (req, res, next) => {
+    try {
+        const mets = await Met.find()
+        res.json({ results: mets })
+    } catch(err) {
+        next(err)
+    }
 })
+
+
+
+module.exports = router

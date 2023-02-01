@@ -8,8 +8,7 @@ const metSchema = mongoose.Schema({
     image: {type: String},
     message: {type: String},
     kudos: {type: Array},
-    followers: {type: Number},
-    following: {type: Number},
+    publicationDate: {type: Date}
 })
 
 const Met = mongoose.model('Met', metSchema)
