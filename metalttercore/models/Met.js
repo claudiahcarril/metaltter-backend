@@ -7,7 +7,7 @@ const metSchema = mongoose.Schema({
     user: {type: String},
     image: {type: String},
     message: {type: String},
-    kudos: {type: Array},
+    kudos: {type: Number},
     publicationDate: {type: Date}
 })
 
