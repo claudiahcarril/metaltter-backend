@@ -1,7 +1,11 @@
 'user strict';
 
+const mongoose = require('mongoose')
+const { Schema } = mongoose
+
 // Loading Met model (post)
 var Met = require('../../models/Met')
+var User = require('../../models/User')
 
 const express = require('express')
 var createError = require('http-errors')
@@ -17,9 +21,25 @@ router.get('/', async (req, res, next) => {
     }
 })
 
+
+/*
+Reference form User Model
+*/
+const userName = new User({
+    _id: new mongoose.Types.ObjectId(),
+  });
+  
+userName.save();
+
+
+
+
+
+
 // GET -> /api/mets/:id
 router.get('/:id', async (req, res, next) => {
     try {
+        
         const id = req.params.id
         const met = await Met.findById(id)
         res.json({ result: met })
@@ -49,7 +69,8 @@ router.put('/:id', async(req, res, next) => {
 router.post('/', async(req, res, next) => {
     try {
         const metData = req.body
-        const met = new Met(metData)
+        const userName = userName._id
+        const met = new Met(metData, userName)
         const metSaved = await met.save()
         res.json({ result: metSaved })
 

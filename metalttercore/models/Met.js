@@ -3,12 +3,11 @@
 const mongoose = require('mongoose')
 
 const metSchema = mongoose.Schema({
-    id: {type: Number},
-    user: {type: String},
+    userName: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
     image: {type: String},
     message: {type: String},
     kudos: {type: Number},
-    publicationDate: {type: Date}
+    dateCreated: {type: Date}
 })
 
 const Met = mongoose.model('Met', metSchema)
