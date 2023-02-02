@@ -1,9 +1,10 @@
 'user strict';
 
 const mongoose = require('mongoose')
+const { ObjectId } = mongoose.Schema
 
 const metSchema = mongoose.Schema({
-    userName: {type: mongoose.Schema.Types.ObjectId, ref: 'User'},
+    postedBy: {type: ObjectId, ref: 'User'},
     image: {type: String},
     message: {type: String},
     kudos: {type: Number},

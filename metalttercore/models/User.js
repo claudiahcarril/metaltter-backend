@@ -1,16 +1,17 @@
 'user strict';
 
 const mongoose = require('mongoose')
-const { Schema } = mongoose
+// const { ObjectId } = mongoose.Schema
 
 const userSchema = mongoose.Schema({
-    _id: Schema.Types.ObjectId,
-    name: {type: String, unique: true},
-    // userName: {type: mongoose.Schema.Types.ObjectId, ref: 'UserAuth'},
-    userName: {type: String, unique: true},
+    username: {type: String, unique: true},
+    name: {type: String},
+    email: {type: String},
+    password: {type: String},
     avatar: {type: String},
     followers: {type: Number},
     following: {type: Number},
+    // mets: [{ type: ObjectId, ref: 'Met' }]
 })
 
 const User = mongoose.model('User', userSchema)

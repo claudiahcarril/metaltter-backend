@@ -8,6 +8,8 @@ var createError = require('http-errors')
 const router = express.Router()
 
 
+
+
 router.get('/', async (req, res, next) => {
     try {
         const users = await User.find()
@@ -27,6 +29,7 @@ router.get('/:id', async (req, res, next) => {
         next(err)
     }
 })
+
 
 
 // PUT -> /api/users

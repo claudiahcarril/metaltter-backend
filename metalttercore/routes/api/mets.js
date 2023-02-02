@@ -14,25 +14,12 @@ const router = express.Router()
 
 router.get('/', async (req, res, next) => {
     try {
-        const mets = await Met.find()
+        const mets = await Met.find().populate('postedBy', ['userName'])
         res.json({ results: mets })
     } catch(err) {
         next(err)
     }
 })
-
-
-/*
-Reference form User Model
-*/
-const userName = new User({
-    _id: new mongoose.Types.ObjectId(),
-  });
-  
-userName.save();
-
-
-
 
 
 
@@ -68,9 +55,21 @@ router.put('/:id', async(req, res, next) => {
 // POST -> /api/mets
 router.post('/', async(req, res, next) => {
     try {
+        //req.headers.authorization 'Bearer h4vk5j634fv5kj6...'
+        // data = libDelJWT.getPayload(req.headers.authorization)
+        // data.userId // 63dbd04422d2d288045407b5
+        /* user = User.findById(data.userId)
+        if (!token) {
+            return next(createError(401, 'Tienes que hacer login'))
+        }
+         */
+        if(!req.body.message) {
+            return next(createError(400, 'Message is required'))
+        }
+        
+
         const metData = req.body
-        const userName = userName._id
-        const met = new Met(metData, userName)
+        const met = new Met(metData)
         const metSaved = await met.save()
         res.json({ result: metSaved })
 
