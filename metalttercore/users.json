@@ -1,6 +1,7 @@
 {
     "users": [
-        {
+        {   
+            "_id": "000000000001",
             "username": "iamslash",
             "name": "Slash",
             "email": "slash@slash.com",
@@ -8,6 +9,26 @@
             "avatar": "/public/images/slash.png",
             "followers": 1000,
             "following": 15
+        },
+        {   
+            "_id": "000000000002",
+            "username": "rosendo",
+            "name": "Rosendo Mercado",
+            "email": "rosendo@rosendo.com",
+            "password": "rosendo",
+            "avatar": "",
+            "followers": 120,
+            "following": 5
+        },
+        {   
+            "_id": "000000000003",
+            "username": "kiskemichael",
+            "name": "Michael Kiske",
+            "email": "kiske@helloween.com",
+            "password": "helloween",
+            "avatar": "",
+            "followers": 190,
+            "following": 36
         }
         
     ]

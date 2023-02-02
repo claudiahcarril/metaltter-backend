@@ -24,13 +24,14 @@ async function initMetaltter() {
     // delete all documents from the ad collection 
     const metResult = await Met.deleteMany()
     console.log(`Eliminados ${metResult.deletedCount} mets`)
-    const userResult = await Met.deleteMany()
+    const userResult = await User.deleteMany()
     console.log(`Eliminados ${userResult.deletedCount} users`)
 
     // create starter mets and users
     const metInserted = await Met.insertMany(metsJson.mets)
     const userInserted = await User.insertMany(usersJson.users)
-    console.log(`Creados ${inserted.length} mets`)
+    console.log(`Creados ${metInserted.length} mets`)
+    console.log(`Creados ${userInserted.length} mets`)
 }
 
 main().catch(err => console.log('Hubo un error', err))
