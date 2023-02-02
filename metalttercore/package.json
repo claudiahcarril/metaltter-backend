@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "cross-env DEBUG=metalttercore:* nodemon ./bin/www"
+    "dev": "cross-env DEBUG=metalttercore:* nodemon ./bin/www",
+    "init-db": "node init-db.js"
   },
   "dependencies": {
     "body-parser": "^1.20.1",

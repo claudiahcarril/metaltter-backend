@@ -1,0 +1,14 @@
+{
+    "users": [
+        {
+            "username": "iamslash",
+            "name": "Slash",
+            "email": "slash@slash.com",
+            "password": "slash",
+            "avatar": "/public/images/slash.png",
+            "followers": 1000,
+            "following": 15
+        }
+        
+    ]
+}

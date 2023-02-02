@@ -12,9 +12,22 @@ var createError = require('http-errors')
 const router = express.Router()
 
 
+// GET Mets
 router.get('/', async (req, res, next) => {
     try {
+        // Static Methods
+        // const name = req.query.name
+        
+        // const skip = req.query.skip
+        // const limit = req.query.limit
+        
+        // const fields = req.query.fields
+        // const sort = req.query.sort
+        
+        // const filtro = {}
+        
         const mets = await Met.find().populate('postedBy', ['userName'])
+        // .lista(filtro, skip, limit, fields, sort)
         res.json({ results: mets })
     } catch(err) {
         next(err)

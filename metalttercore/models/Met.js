@@ -11,6 +11,18 @@ const metSchema = mongoose.Schema({
     dateCreated: {type: Date}
 })
 
+
+// Static Methods
+metSchema.statics.lista = function(filtro, skip, limit, fields, sort) {
+    const query = Met.find(filtro)
+    query.skip(skip)
+    query.limit(limit)
+    query.select(fields)
+    query.sort(sort)
+    return query.exec()
+}
+
+
 const Met = mongoose.model('Met', metSchema)
 
 module.exports = Met

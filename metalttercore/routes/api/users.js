@@ -9,7 +9,7 @@ const router = express.Router()
 
 
 
-
+// GET Users
 router.get('/', async (req, res, next) => {
     try {
         const users = await User.find()
