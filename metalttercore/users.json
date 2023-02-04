@@ -16,7 +16,7 @@
             "name": "Rosendo Mercado",
             "email": "rosendo@rosendo.com",
             "password": "rosendo",
-            "avatar": "",
+            "avatar": "/public/images/rosendo.jpg",
             "followers": 120,
             "following": 5
         },
@@ -26,9 +26,29 @@
             "name": "Michael Kiske",
             "email": "kiske@helloween.com",
             "password": "helloween",
-            "avatar": "",
+            "avatar": "/public/images/kiske.jpg",
             "followers": 190,
             "following": 36
+        },
+        {   
+            "_id": "000000000004",
+            "username": "alicecooper",
+            "name": "Alice Cooper",
+            "email": "cooper@alice.com",
+            "password": "poison",
+            "avatar": "/public/images/alicecooper.jpg",
+            "followers": 160,
+            "following": 34
+        },
+        {   
+            "_id": "000000000005",
+            "username": "brianMay",
+            "name": "Brian May",
+            "email": "brian@queen.com",
+            "password": "guitart",
+            "avatar": "/public/images/brianmay.jpg",
+            "followers": 160,
+            "following": 34
         }
         
     ]

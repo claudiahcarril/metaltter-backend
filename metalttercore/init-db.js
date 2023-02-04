@@ -31,7 +31,7 @@ async function initMetaltter() {
     const metInserted = await Met.insertMany(metsJson.mets)
     const userInserted = await User.insertMany(usersJson.users)
     console.log(`Creados ${metInserted.length} mets`)
-    console.log(`Creados ${userInserted.length} mets`)
+    console.log(`Creados ${userInserted.length} usuarios`)
 }
 
 main().catch(err => console.log('Hubo un error', err))
