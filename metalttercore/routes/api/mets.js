@@ -26,9 +26,9 @@ router.get('/', async (req, res, next) => {
         
         // const filtro = {}
         
-        const mets = await Met.find().populate('postedBy', ['userName'])
+        const mets = await Met.find().populate('postedBy')
         // .lista(filtro, skip, limit, fields, sort)
-        res.json({ results: mets })
+        res.json(mets)
     } catch(err) {
         next(err)
     }
