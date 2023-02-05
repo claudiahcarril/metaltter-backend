@@ -46,7 +46,7 @@
             "name": "Brian May",
             "email": "brian@queen.com",
             "password": "guitart",
-            "avatar": "/public/images/brianmay.jpg",
+            "avatar": "/public/images/brianmay.png",
             "followers": 160,
             "following": 34
         }
