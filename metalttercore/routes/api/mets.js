@@ -39,14 +39,28 @@ router.get('/', async (req, res, next) => {
 // GET -> /api/mets/:id
 router.get('/:id', async (req, res, next) => {
     try {
-        
         const id = req.params.id
-        const met = await Met.findById(id)
-        res.json({ result: met })
+        const met = await Met.findById(id).populate('postedBy')
+        res.json(met)
     } catch(err) {
         next(err)
     }
 })
+
+
+// GET -> /api/mets/postedBy/:id
+router.get('/postedBy/:id', async (req, res, next) => {
+    try {
+        const id = req.params.id
+        const metData = req.body
+        const metUser = await Met.find({ postedBy: id}, metData).populate('postedBy')
+        res.json(metUser)
+    } catch (err) {
+        next(err)
+    }
+})
+
+
 
 
 // PUT -> /api/mets
