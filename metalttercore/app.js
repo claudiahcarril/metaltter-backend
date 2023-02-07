@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var cors = require('cors')
 
+
 // Connecting to Mongoose
 require('./lib/connectMongoose')
 require('./routes/api/mets')
@@ -36,6 +37,7 @@ app.use(cors());
 // /* API ROUTES*/
 app.use('/api/mets', require('./routes/api/mets'));
 app.use('/api/users', require('./routes/api/users'));
+app.use('/api/login', require('./routes/api/login'));
 
 
 
@@ -69,5 +71,7 @@ res.locals.error = req.app.get('env') === 'development' ? err : {};
 res.status(err.status || 500);
 res.render('error');
 });
+
+
 
 module.exports = app;
