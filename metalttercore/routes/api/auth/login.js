@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const jwt = require('jsonwebtoken')
-var User = require('../../models/User')
+var User = require('../../../models/User')
 
 
 
@@ -11,8 +11,8 @@ router.post('/', async (req, res, next) => {
     const user = await User.findOne({username: userData.username, password: userData.password})
     try {
         if (user.username === userData.username) {
-            const token = jwt.sign({user}, 'Dgh5Hmnbkib868g.7bg8g767f5f7')
-            res.json(token)
+            const token = jwt.sign({id: user._id}, 'Dgh5Hmnbkib868g7bg8g767f5f7', { expiresIn: '1h' })
+            res.json({access_token: token})
         }
         
     } catch (err) {
