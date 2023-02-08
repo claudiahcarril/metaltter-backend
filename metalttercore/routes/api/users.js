@@ -2,7 +2,7 @@
 
 // Loading User model
 var User = require('../../models/User')
-
+const jwt = require('jsonwebtoken')
 const express = require('express')
 var createError = require('http-errors')
 const router = express.Router()
@@ -69,7 +69,12 @@ router.put('/:id', async(req, res, next) => {
 // POST -> /api/users
 router.post('/', async(req, res, next) => {
     const userData = req.body
-    console.log('userData', userData.username)
+
+    if (!/^[a-z]+$/i.test(userData.username)) {
+        next(createError(400, 'Invalid username'))
+        return
+    }
+
     let user = await User.findOne({username: userData.username})
 
     if(user) {
@@ -80,14 +85,14 @@ router.post('/', async(req, res, next) => {
     user = await User.findOne({email: userData.email})
 
     if(user) {
-        next(createError(400))
+        next(createError(400, 'Ya existe una cuenta con esta dirección de correo'))
         return
     }
 
     const newUser = new User(userData)
     const userSaved = await newUser.save()
     res.json(userSaved)
- 
+
 })
 
 
