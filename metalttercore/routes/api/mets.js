@@ -10,6 +10,7 @@ var User = require('../../models/User')
 const express = require('express')
 var createError = require('http-errors')
 const router = express.Router()
+const jwt = require('jsonwebtoken')
 
 
 // GET Mets
@@ -71,7 +72,7 @@ router.put('/:id', async(req, res, next) => {
         const metUpdated = await Met.findOneAndUpdate({ _id: id}, metData, {
             new: true
         })
-        res.json({ result: metUpdated} )
+        res.json(metUpdated)
 
     } catch (err) {
         next(err)
@@ -81,29 +82,45 @@ router.put('/:id', async(req, res, next) => {
 
 // POST -> /api/mets
 router.post('/', async(req, res, next) => {
-    try {
-        //req.headers.authorization 'Bearer h4vk5j634fv5kj6...'
-        // data = libDelJWT.getPayload(req.headers.authorization)
-        // data.userId // 63dbd04422d2d288045407b5
-        /* user = User.findById(data.userId)
-        if (!token) {
-            return next(createError(401, 'Tienes que hacer login'))
-        }
-         */
-        if(!req.body.message) {
-            return next(createError(400, 'Message is required'))
-        }
-        
+    let user = null
+    const token = req.headers["authorization"]
+    if (!token) {
+        next(createError(401, 'Tienes que hacer login para publicar'))
+        return
+    } 
 
-        const metData = req.body
-        const met = new Met(metData)
-        const metSaved = await met.save()
-        res.json({ result: metSaved })
+    const tokenWithoutBearer = token.replace('Bearer ', '')
+    try {
+        const tokenInfo = jwt.verify(tokenWithoutBearer, 'Dgh5Hmnbkib868g7bg8g767f5f7')
+        user = await User.findById(tokenInfo.id)
+        console.log(tokenInfo)
+        if (!user) {
+            next(createError(403, 'Error user'))
+            return
+        }
 
     } catch (err) {
-        next(err)
+        console.log(err)
+        next(createError(403, 'Error'))
+        return
     }
+
+    const userId = user._id
+    const metData = req.body
+
+
+    if(!req.body.message) {
+        return next(createError(400, 'Message is required'))
+    }
+        
+    const met = new Met({ postedBy: userId, ...metData })
+    const metSaved = await met.save()
+    res.json(metSaved)
+
 })
+
+
+
 
 
 // DELETE -> /api/mets/:id
