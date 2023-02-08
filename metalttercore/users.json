@@ -49,6 +49,16 @@
             "avatar": "/public/images/brianmay.png",
             "followers": 160,
             "following": 34
+        },
+        {   
+            "_id": "000000000006",
+            "username": "tobiasAvantasia",
+            "name": "Tobias Sammet",
+            "email": "tobias@avantasia.com",
+            "password": "avantasia",
+            "avatar": "/public/images/tobiassammet.png",
+            "followers": 360,
+            "following": 3
         }
         
     ]

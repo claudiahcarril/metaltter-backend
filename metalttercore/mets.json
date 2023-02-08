@@ -28,26 +28,27 @@
             "kudos": 195,
             "dateCreated": 2023
         },
-                {
+        {
             "postedBy": "000000000003",
             "image": "",
             "message": "Pero no os preocupéis que tocaremos en el Rock Imperium",
             "kudos": 295,
             "dateCreated": 2023
         },
-                {
+        {
             "postedBy": "000000000004",
             "image": "/public/images/aliceconcert.jpg",
             "message": "Y otro conciertillo más...",
             "kudos": 195,
             "dateCreated": 2023
         },
-                        {
+        {
             "postedBy": "000000000005",
             "image": "",
             "message": "¡Lanzamiento de nuevo disco de Queen con Adam Lambert!",
             "kudos": 395,
             "dateCreated": 2023
         }
+        
     ]
 }

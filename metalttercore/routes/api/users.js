@@ -20,6 +20,8 @@ router.get('/', async (req, res, next) => {
     }
 })
 
+
+
 // GET -> /api/users/:id
 router.get('/:id', async (req, res, next) => {
     try {
@@ -31,6 +33,19 @@ router.get('/:id', async (req, res, next) => {
     }
 })
 
+// GET -> /api/users/:username
+router.get('/:username', async (req, res, next) => {
+    const userData = req.params.username
+    console.log(req.params)
+    const user = await User.find({username: userData.username})
+    
+    if (!user) {
+        next(createError(403))
+        return
+    }
+    res.json(user)
+
+})
 
 
 
@@ -53,16 +68,30 @@ router.put('/:id', async(req, res, next) => {
 
 // POST -> /api/users
 router.post('/', async(req, res, next) => {
-    try {
-        const userData = req.body
-        const user = new User(userData)
-        const userSaved = await user.save()
-        res.json({ result: userSaved })
+    const userData = req.body
+    console.log('userData', userData.username)
+    let user = await User.findOne({username: userData.username})
 
-    } catch (err) {
-        next(err)
+    if(user) {
+        next(createError(400, 'Ya existe este usuario'))
+        return
     }
+
+    user = await User.findOne({email: userData.email})
+
+    if(user) {
+        next(createError(400))
+        return
+    }
+
+    const newUser = new User(userData)
+    const userSaved = await newUser.save()
+    res.json(userSaved)
+ 
 })
+
+
+
 
 
 // DELETE -> /api/users/:id
