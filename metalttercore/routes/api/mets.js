@@ -44,7 +44,7 @@ router.get('/', async (req, res, next) => {
             res.json(mets) 
         }
         
-        const mets = await Met.find({}).populate('postedBy').sort({dateCreated: -1})
+        const mets = await Met.find({}).populate('postedBy kudos').sort({dateCreated: -1})
         // // .lista(filtro, skip, limit, fields, sort)
         res.json(mets)
     } catch(err) {
