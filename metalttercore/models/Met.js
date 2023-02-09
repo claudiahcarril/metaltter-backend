@@ -5,9 +5,9 @@ const { ObjectId } = mongoose.Schema
 
 const metSchema = mongoose.Schema({
     postedBy: {type: ObjectId, ref: 'User'},
-    image: {type: String},
+    image: {type: String, default: ''},
     message: {type: String},
-    kudos: {type: Number},
+    kudos: {type: Number, default: 0},
     dateCreated: {type: Date}
 })
 

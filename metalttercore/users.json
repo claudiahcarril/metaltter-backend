@@ -17,7 +17,7 @@
             "email": "rosendo@rosendo.com",
             "password": "rosendo",
             "avatar": "/public/images/rosendo.jpg",
-            "followers": 120,
+            "followers": 1200,
             "following": 5
         },
         {   
@@ -27,7 +27,7 @@
             "email": "kiske@helloween.com",
             "password": "helloween",
             "avatar": "/public/images/kiske.jpg",
-            "followers": 190,
+            "followers": 1900,
             "following": 36
         },
         {   
@@ -37,7 +37,7 @@
             "email": "cooper@alice.com",
             "password": "poison",
             "avatar": "/public/images/alicecooper.jpg",
-            "followers": 160,
+            "followers": 1608,
             "following": 34
         },
         {   
@@ -47,7 +47,7 @@
             "email": "brian@queen.com",
             "password": "guitart",
             "avatar": "/public/images/brianmay.png",
-            "followers": 160,
+            "followers": 1960,
             "following": 34
         },
         {   
@@ -57,9 +57,101 @@
             "email": "tobias@avantasia.com",
             "password": "avantasia",
             "avatar": "/public/images/tobiassammet.png",
-            "followers": 360,
+            "followers": 2360,
             "following": 3
+        },
+        {   
+            "_id": "000000000007",
+            "username": "TylerAerosmith",
+            "name": "Steven Tyler",
+            "email": "steven@aerosmith.com",
+            "password": "aerosmith",
+            "avatar": "/public/images/steventyler.png",
+            "followers": 4680,
+            "following": 30
+        },
+        {   
+            "_id": "000000000008",
+            "username": "ironMaidenBruce",
+            "name": "Bruce Dickinson",
+            "email": "steven@ironmaiden.com",
+            "password": "bruce",
+            "avatar": "/public/images/bruce.png",
+            "followers": 5760,
+            "following": 3
+        },
+        {   
+            "_id": "000000000009",
+            "username": "jamesMetalHetfield",
+            "name": "James Hetfield",
+            "email": "james@metallica.com",
+            "password": "james",
+            "avatar": "/public/images/jameshetfield.png",
+            "followers": 8950,
+            "following": 63
+        },
+        {   
+            "_id": "000000000010",
+            "username": "joakimbroden",
+            "name": "Joakim Brodén",
+            "email": "j@sabaton.com",
+            "password": "sabaton",
+            "avatar": "/public/images/joakimsabaton.png",
+            "followers": 1560,
+            "following": 526
+        },
+        {   
+            "_id": "000000000011",
+            "username": "elizeAmaranthe",
+            "name": "Elize Ryd",
+            "email": "elize@amaranthe.com",
+            "password": "amaranthe",
+            "avatar": "/public/images/elizeamaranthe.png",
+            "followers": 1760,
+            "following": 352
+        },
+        {   
+            "_id": "000000000012",
+            "username": "alissaWhite",
+            "name": "Alissa White-Gluz",
+            "email": "alissawg@arch.com",
+            "password": "enemy",
+            "avatar": "/public/images/alissa.png",
+            "followers": 8330,
+            "following": 52
+        },
+        {   
+            "_id": "000000000013",
+            "username": "geneSimmonskissss",
+            "name": "Gene Simmons",
+            "email": "gsg@kiss.com",
+            "password": "simmons",
+            "avatar": "/public/images/genesimmons.png",
+            "followers": 6627,
+            "following": 528
+        },
+        {   
+            "_id": "000000000014",
+            "username": "breakingtherob",
+            "name": "Rob Halford",
+            "email": "judas@breaking.com",
+            "password": "judaspriest",
+            "avatar": "/public/images/robjudas.png",
+            "followers": 7441,
+            "following": 552
+        },
+        {   
+            "_id": "000000000015",
+            "username": "attilapowerwolf",
+            "name": "Attila Dorn",
+            "email": "a@powerwolf.com",
+            "password": "powerwolf",
+            "avatar": "/public/images/attila.png",
+            "followers": 5278,
+            "following": 31
         }
+        
+        
         
     ]
 }
