@@ -19,21 +19,59 @@ router.get('/', async (req, res, next) => {
         // Static Methods
         // const name = req.query.name
         
-        // const skip = req.query.skip
-        // const limit = req.query.limit
+        const skip = req.query.skip
+        const limit = req.query.limit
         
-        // const fields = req.query.fields
-        // const sort = req.query.sort
+        const fields = req.query.fields
+        const sort = req.query.sort
+
+        // const recentDate = req.query.recentDate
+        // const oldDate = req.query.oldDate
         
-        // const filtro = {}
+        const filtro = {}
+
+        // if (recentDate && oldDate) {
+        //     filtro.dateCreated = { $gte: recentDate, $lte: oldDate }
+        // } else if (recentDate) {
+        //     filtro.dateCreated = { $gte: recentDate }
+        // } else if (oldDate) {
+        //     filtro.dateCreated = { $lte: oldDate }
+        // }
+
+
+        if (sort) {
+            const mets = await Met.find().populate('postedBy').sort({dateCreated: 1})
+            res.json(mets) 
+        }
         
-        const mets = await Met.find().populate('postedBy')
-        // .lista(filtro, skip, limit, fields, sort)
+        const mets = await Met.find({}).populate('postedBy').sort({dateCreated: -1})
+        // // .lista(filtro, skip, limit, fields, sort)
         res.json(mets)
     } catch(err) {
         next(err)
     }
 })
+
+
+
+// // // GET --> /api/mets/?sort=descending
+// router.get('/?sort=descending', async (req, res, next) => {
+//     try {
+//         const sort = req.query.sort
+//         const mets = await Met.find().populate('postedBy').sort({dateCreated: 1})
+//         res.json(mets)
+//     } catch (err) {
+//         next(err)
+//     }
+// })
+
+
+// // GET --> /api/mets/?offset=0&limit=10
+// router.get('?skip=0&limit=10', async (req, res, next) => {
+//     const skip = req.query.skip
+//     const limit = req.query.limit
+// })
+
 
 
 
