@@ -24,6 +24,12 @@ router.get('/', async (req, res, next) => {
 })
 
 
+/// --> GET DAme los mets que le gustan a este tio (tio logueado -> userid lo tenemos con getUserByToken)
+
+
+
+
+
 // POST Kudos
 router.post('/', async (req, res, next) => {
     const token = req.headers["authorization"]
