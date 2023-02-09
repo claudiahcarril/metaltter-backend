@@ -54,18 +54,6 @@ router.get('/', async (req, res, next) => {
 
 
 
-// // // GET --> /api/mets/?sort=descending
-// router.get('/?sort=descending', async (req, res, next) => {
-//     try {
-//         const sort = req.query.sort
-//         const mets = await Met.find().populate('postedBy').sort({dateCreated: 1})
-//         res.json(mets)
-//     } catch (err) {
-//         next(err)
-//     }
-// })
-
-
 // // GET --> /api/mets/?offset=0&limit=10
 // router.get('?skip=0&limit=10', async (req, res, next) => {
 //     const skip = req.query.skip
@@ -90,9 +78,16 @@ router.get('/:id', async (req, res, next) => {
 // GET -> /api/mets/postedBy/:id
 router.get('/postedBy/:id', async (req, res, next) => {
     try {
+        const sort = req.query.sort
         const id = req.params.id
         const metData = req.body
-        const metUser = await Met.find({ postedBy: id}, metData).populate('postedBy')
+
+        if (sort) {
+            const metUser = await Met.find({ postedBy: id}, metData).populate('postedBy').sort({dateCreated: 1})
+            res.json(metUser) 
+        }
+
+        const metUser = await Met.find({ postedBy: id}, metData).populate('postedBy').sort({dateCreated: -1})
         res.json(metUser)
     } catch (err) {
         next(err)
