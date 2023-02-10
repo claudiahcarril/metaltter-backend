@@ -25,26 +25,15 @@ router.get('/', async (req, res, next) => {
         const fields = req.query.fields
         const sort = req.query.sort
 
-        // const recentDate = req.query.recentDate
-        // const oldDate = req.query.oldDate
-        
         const filtro = {}
-
-        // if (recentDate && oldDate) {
-        //     filtro.dateCreated = { $gte: recentDate, $lte: oldDate }
-        // } else if (recentDate) {
-        //     filtro.dateCreated = { $gte: recentDate }
-        // } else if (oldDate) {
-        //     filtro.dateCreated = { $lte: oldDate }
-        // }
 
 
         if (sort) {
-            const mets = await Met.find().populate('postedBy').sort({dateCreated: 1})
+            const mets = await Met.find().populate('postedBy').sort({dateCreated: 1}).limit(limit).skip(skip)
             res.json(mets) 
         }
-        
-        const mets = await Met.find({}).populate('postedBy kudos').sort({dateCreated: -1})
+
+        const mets = await Met.find({}).populate('postedBy kudos').sort({dateCreated: -1}).limit(limit).skip(skip)
         // // .lista(filtro, skip, limit, fields, sort)
         res.json(mets)
     } catch(err) {
@@ -78,16 +67,18 @@ router.get('/:id', async (req, res, next) => {
 // GET -> /api/mets/postedBy/:id
 router.get('/postedBy/:id', async (req, res, next) => {
     try {
+        const skip = req.query.skip
+        const limit = req.query.limit
         const sort = req.query.sort
         const id = req.params.id
         const metData = req.body
 
         if (sort) {
-            const metUser = await Met.find({ postedBy: id}, metData).populate('postedBy').sort({dateCreated: 1})
+            const metUser = await Met.find({ postedBy: id}, metData).populate('postedBy').sort({dateCreated: 1}).limit(limit).skip(skip)
             res.json(metUser) 
         }
 
-        const metUser = await Met.find({ postedBy: id}, metData).populate('postedBy').sort({dateCreated: -1})
+        const metUser = await Met.find({ postedBy: id}, metData).populate('postedBy').sort({dateCreated: -1}).limit(limit).skip(skip)
         res.json(metUser)
     } catch (err) {
         next(err)
