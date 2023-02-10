@@ -11,7 +11,7 @@ router.post('/', async (req, res, next) => {
     const user = await User.findOne({username: userData.username, password: userData.password})
     try {
         if (user.username === userData.username) {
-            const token = jwt.sign({id: user._id}, 'Dgh5Hmnbkib868g7bg8g767f5f7', { expiresIn: '1h' })
+            const token = jwt.sign({id: user._id}, 'Dgh5Hmnbkib868g7bg8g767f5f7', { expiresIn: '100h' })
             res.json({access_token: token})
         }
         

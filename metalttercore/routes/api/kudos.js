@@ -14,17 +14,31 @@ const { getUserByToken } = require('../verifyToken');
 
 
 // GET Kudos
-router.get('/', async (req, res, next) => {
-    try {
-        const kudos = await Kudo.find()
-        res.json(kudos)
-    } catch(err) {
-        next(err)
-    }
-})
+// router.get('/', async (req, res, next) => {
+//     try {
+//         const kudos = await Kudo.find()
+//         res.json(kudos)
+//     } catch(err) {
+//         next(err)
+//     }
+// })
 
 
 /// --> GET DAme los mets que le gustan a este tio (tio logueado -> userid lo tenemos con getUserByToken)
+router.get('/', async (req, res, next) => {
+    const token = req.headers['authorization']
+    let user
+    try {
+        user = await getUserByToken(token)
+    } catch (err) {
+        next(err)
+    }
+
+    const kudosUser = await Kudo.find({user: user.id}, {_id:0, met: 1})
+    
+    res.json(kudosUser.map(m => m.met))
+
+})
 
 
 
@@ -38,11 +52,15 @@ router.post('/', async (req, res, next) => {
         user = await getUserByToken(token)
     } catch (err) {
         next(err)
+        return
     }
+
     const met = await Met.findById(req.body.metId)
     if (!met) {
-        return next(createError(404))
+        return next(createError(404, 'Met no encontrado'))
     }
+
+    console.log(typeof met.id)
 
     const kudoData = { user: user.id, met: met.id }
 
