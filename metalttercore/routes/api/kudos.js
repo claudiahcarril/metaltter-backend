@@ -60,8 +60,6 @@ router.post('/', async (req, res, next) => {
         return next(createError(404, 'Met no encontrado'))
     }
 
-    console.log(typeof met.id)
-
     const kudoData = { user: user.id, met: met.id }
 
     let kudo = await Kudo.findOne(kudoData)
@@ -77,6 +75,48 @@ router.post('/', async (req, res, next) => {
 
     res.json(kudoSave)
 })
+
+
+
+// DELETE Kudos
+
+router.delete('/', async (req, res, next) => {
+    const token = req.headers["authorization"]
+    let user;
+    try {
+        user = await getUserByToken(token)
+    } catch (err) {
+        next(err, 'err1')
+        return
+    }
+
+    const met = await Met.findById(req.body.metId)
+    if (!met) {
+        return next(createError(404, 'Met no encontrado'))
+    }
+
+    const kudoData = { user: user.id, met: met.id }
+    console.log(user.id, met.id)
+
+    let kudo = await Kudo.findOne(kudoData)
+    console.log(kudo)
+    if (!kudo) {
+        next(createError(404, 'Met no encontrado'))
+        return
+    }
+
+    const kudoDelete = await Kudo.deleteOne(kudo)
+    met.kudos--
+    met.save()
+    res.json(kudoDelete)
+    
+})
+
+
+
+
+
+
 
 
 module.exports = router
