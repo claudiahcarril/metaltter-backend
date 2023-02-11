@@ -27,6 +27,11 @@ router.get('/', async (req, res, next) => {
 
         const filtro = {}
 
+        // if (message) {
+        //     filtro.message = { $regex: new RegExp(`^${message}`, 'i') }
+        //     const mets = await Met.find().populate('postedBy').sort({dateCreated: -1}).limit(limit).skip(skip)
+        //     res.json(mets) 
+        // }
 
         if (sort) {
             const mets = await Met.find().populate('postedBy').sort({dateCreated: 1}).limit(limit).skip(skip)
@@ -40,14 +45,6 @@ router.get('/', async (req, res, next) => {
         next(err)
     }
 })
-
-
-
-// // GET --> /api/mets/?offset=0&limit=10
-// router.get('?skip=0&limit=10', async (req, res, next) => {
-//     const skip = req.query.skip
-//     const limit = req.query.limit
-// })
 
 
 
