@@ -23,7 +23,7 @@ router.get('/', async (req, res, next) => {
 
 
 // GET -> /api/users/:id
-router.get('/:id', async (req, res, next) => {
+router.get('/id/:id', async (req, res, next) => {
     try {
         const id = req.params.id
         const user = await User.findById(id)
@@ -38,12 +38,11 @@ router.get('/:id', async (req, res, next) => {
 
 // GET -> /api/users/:username
 router.get('/:username', async (req, res, next) => {
-    const userData = req.params.username
-    console.log(req.params)
-    const user = await User.find({username: userData.username})
+    const username = req.params.username
+    const user = await User.findOne({username})
     
     if (!user) {
-        next(createError(403))
+        next(createError(404))
         return
     }
     res.json(user)
