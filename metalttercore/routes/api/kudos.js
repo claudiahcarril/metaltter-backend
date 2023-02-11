@@ -80,7 +80,7 @@ router.post('/', async (req, res, next) => {
 
 // DELETE Kudos
 
-router.delete('/', async (req, res, next) => {
+router.delete('/:id', async (req, res, next) => {
     const token = req.headers["authorization"]
     let user;
     try {
@@ -90,9 +90,12 @@ router.delete('/', async (req, res, next) => {
         return
     }
 
-    const met = await Met.findById(req.body.metId)
+    const id = req.params.id
+
+    const met = await Met.findById(id)
+    console.log(met)
     if (!met) {
-        return next(createError(404, 'Met no encontrado'))
+        return next(createError(404, 'Met no encontrado 1'))
     }
 
     const kudoData = { user: user.id, met: met.id }
@@ -101,7 +104,7 @@ router.delete('/', async (req, res, next) => {
     let kudo = await Kudo.findOne(kudoData)
     console.log(kudo)
     if (!kudo) {
-        next(createError(404, 'Met no encontrado'))
+        next(createError(404, 'Met no encontrado 2'))
         return
     }
 
