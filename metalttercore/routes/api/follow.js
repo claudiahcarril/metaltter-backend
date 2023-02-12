@@ -3,12 +3,12 @@
 const mongoose = require('mongoose')
 
 // Loading Follow model
+const Follow = require('../../models/Follow');
 var Met = require('../../models/Met')
 var User = require('../../models/User')
 
 const express = require('express')
 var createError = require('http-errors');
-const Follow = require('../../models/Follow');
 const router = express.Router()
 const { getUserByToken } = require('../verifyToken');
 
@@ -22,7 +22,7 @@ router.get('/', async (req, res, next) => {
     try {
         user = await getUserByToken(token)
     } catch (err) {
-        next(err)
+        next(err, 'Errorrrrr')
     }
     console.log(user)
 
@@ -87,22 +87,28 @@ router.delete('/:id', async (req, res, next) => {
 
     const id = req.params.id
 
-    const following = await Follow.findById(id)
-    if (!following) {
+    const follow = await Follow.findById(id)
+    console.log('1111',follow)
+    if (!follow) {
         return next(createError(404, 'Follow no encontrado 1'))
     }
 
-    const followData = { user: user.id, following: following.id }
+    const followData = { user: user.id, following: follow.following }
 
-    let follow = await Follow.findOne(followData)
-    if (!follow) {
-        next(createError(404, 'Follow no encontrado 2'))
+    let userFollowing = await User.findById(follow.following)
+    if (!userFollowing) {
+        next(createError(404, 'User following no encontrado 2'))
         return
     }
 
-    const followDelete = await Follow.deleteOne(follow)
-    user.totalFollowers--
+    const followDelete = await Follow.deleteOne(followData)
+
+    user.totalFollowing--
+    userFollowing.totalFollowers--
+    
     user.save()
+    userFollowing.save()
+    
     res.json(followDelete)
     
 })

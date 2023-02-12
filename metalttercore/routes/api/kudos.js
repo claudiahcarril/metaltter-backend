@@ -91,18 +91,14 @@ router.delete('/:id', async (req, res, next) => {
     }
 
     const id = req.params.id
-
     const met = await Met.findById(id)
-    console.log(met)
     if (!met) {
         return next(createError(404, 'Met no encontrado 1'))
     }
 
     const kudoData = { user: user.id, met: met.id }
-    console.log(user.id, met.id)
 
     let kudo = await Kudo.findOne(kudoData)
-    console.log(kudo)
     if (!kudo) {
         next(createError(404, 'Met no encontrado 2'))
         return
