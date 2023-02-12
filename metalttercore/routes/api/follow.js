@@ -27,7 +27,6 @@ router.get('/', async (req, res, next) => {
     console.log(user)
 
     const following = await Follow.find({user: user.id}, {_id:0, following: 1})
-    console.log(following)
     
     res.json(following.map(u => u.following))
 
@@ -54,24 +53,21 @@ router.post('/', async (req, res, next) => {
     }
 
     const followData = { user: user.id, following: following.id }
-    console.log('11111', followData)
 
     let follow = await Follow.findOne(followData)
-    console.log(follow)
     if (follow) {
         res.json(follow)
         return
     }
 
     follow = new Follow(followData)
-    console.log('2222',follow)
     const followSave = await follow.save()
-    console.log('3333',user.totalFollowing)
+
     user.totalFollowing++
-    console.log('4444',user.totalFollowing)
-    console.log('5555',following.totalFollowers)
     following.totalFollowers++
+
     user.save()
+    following.save()
 
     res.json(followSave)
 })
