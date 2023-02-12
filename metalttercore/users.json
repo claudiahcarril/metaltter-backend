@@ -7,8 +7,8 @@
             "email": "slash@slash.com",
             "password": "slash",
             "avatar": "/public/images/slash.png",
-            "followers": 1000,
-            "following": 15
+            "totalFollowers": 1000,
+            "totalFollowing": 15
         },
         {   
             "_id": "000000000002",
@@ -17,8 +17,8 @@
             "email": "rosendo@rosendo.com",
             "password": "rosendo",
             "avatar": "/public/images/rosendo.jpg",
-            "followers": 1200,
-            "following": 5
+            "totalFollowers": 1200,
+            "totalFollowing": 5
         },
         {   
             "_id": "000000000003",
@@ -27,8 +27,8 @@
             "email": "kiske@helloween.com",
             "password": "helloween",
             "avatar": "/public/images/kiske.jpg",
-            "followers": 1900,
-            "following": 36
+            "totalFollowers": 1900,
+            "totalFollowing": 36
         },
         {   
             "_id": "000000000004",
@@ -37,8 +37,8 @@
             "email": "cooper@alice.com",
             "password": "poison",
             "avatar": "/public/images/alicecooper.jpg",
-            "followers": 1608,
-            "following": 34
+            "totalFollowers": 1608,
+            "totalFollowing": 34
         },
         {   
             "_id": "000000000005",
@@ -47,8 +47,8 @@
             "email": "brian@queen.com",
             "password": "guitart",
             "avatar": "/public/images/brianmay.png",
-            "followers": 1960,
-            "following": 34
+            "totalFollowers": 1960,
+            "totalFollowing": 34
         },
         {   
             "_id": "000000000006",
@@ -57,8 +57,8 @@
             "email": "tobias@avantasia.com",
             "password": "avantasia",
             "avatar": "/public/images/tobiassammet.png",
-            "followers": 2360,
-            "following": 3
+            "totalFollowers": 2360,
+            "totalFollowing": 3
         },
         {   
             "_id": "000000000007",
@@ -67,8 +67,8 @@
             "email": "steven@aerosmith.com",
             "password": "aerosmith",
             "avatar": "/public/images/steventyler.png",
-            "followers": 4680,
-            "following": 30
+            "totalFollowers": 4680,
+            "totalFollowing": 30
         },
         {   
             "_id": "000000000008",
@@ -77,8 +77,8 @@
             "email": "steven@ironmaiden.com",
             "password": "bruce",
             "avatar": "/public/images/bruce.png",
-            "followers": 5760,
-            "following": 3
+            "totalFollowers": 5760,
+            "totalFollowing": 3
         },
         {   
             "_id": "000000000009",
@@ -87,8 +87,8 @@
             "email": "james@metallica.com",
             "password": "james",
             "avatar": "/public/images/jameshetfield.png",
-            "followers": 8950,
-            "following": 63
+            "totalFollowers": 8950,
+            "totalFollowing": 63
         },
         {   
             "_id": "000000000010",
@@ -97,8 +97,8 @@
             "email": "j@sabaton.com",
             "password": "sabaton",
             "avatar": "/public/images/joakimsabaton.png",
-            "followers": 1560,
-            "following": 526
+            "totalFollowers": 1560,
+            "totalFollowing": 526
         },
         {   
             "_id": "000000000011",
@@ -107,8 +107,8 @@
             "email": "elize@amaranthe.com",
             "password": "amaranthe",
             "avatar": "/public/images/elizeamaranthe.png",
-            "followers": 1760,
-            "following": 352
+            "totalFollowers": 1760,
+            "totalFollowing": 352
         },
         {   
             "_id": "000000000012",
@@ -117,8 +117,8 @@
             "email": "alissawg@arch.com",
             "password": "enemy",
             "avatar": "/public/images/alissa.png",
-            "followers": 8330,
-            "following": 52
+            "totalFollowers": 8330,
+            "totalFollowing": 52
         },
         {   
             "_id": "000000000013",
@@ -127,8 +127,8 @@
             "email": "gsg@kiss.com",
             "password": "simmons",
             "avatar": "/public/images/genesimmons.png",
-            "followers": 6627,
-            "following": 528
+            "totalFollowers": 6627,
+            "totalFollowing": 528
         },
         {   
             "_id": "000000000014",
@@ -137,8 +137,8 @@
             "email": "judas@breaking.com",
             "password": "judaspriest",
             "avatar": "/public/images/robjudas.png",
-            "followers": 7441,
-            "following": 552
+            "totalFollowers": 7441,
+            "totalFollowing": 552
         },
         {   
             "_id": "000000000015",
@@ -147,8 +147,8 @@
             "email": "a@powerwolf.com",
             "password": "powerwolf",
             "avatar": "/public/images/attila.png",
-            "followers": 5278,
-            "following": 31
+            "totalFollowers": 5278,
+            "totalFollowing": 31
         }
         
         

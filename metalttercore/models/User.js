@@ -9,8 +9,8 @@ const userSchema = mongoose.Schema({
     email: {type: String},
     password: {type: String},
     avatar: {type: String, default: "/public/images/default-avatar.png"},
-    followers: {type: Number, default: 0},
-    following: {type: Number, default: 0},
+    totalFollowers: {type: Number, default: 0},
+    totalFollowing: {type: Number, default: 0},
     // mets: [{ type: ObjectId, ref: 'Met' }]
 })
 

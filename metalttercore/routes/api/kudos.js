@@ -24,7 +24,7 @@ const { getUserByToken } = require('../verifyToken');
 // })
 
 
-/// --> GET DAme los mets que le gustan a este tio (tio logueado -> userid lo tenemos con getUserByToken)
+/// --> GET (Give me the mets that this user likes)
 router.get('/', async (req, res, next) => {
     const token = req.headers['authorization']
     let user

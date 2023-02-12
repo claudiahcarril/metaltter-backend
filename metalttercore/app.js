@@ -38,6 +38,7 @@ app.use(cors());
 app.use('/api/mets', require('./routes/api/mets'));
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/kudos', require('./routes/api/kudos'));
+app.use('/api/follow', require('./routes/api/follow'));
 app.use('/api/auth/login', require('./routes/api/auth/login'));
 app.use('/api/auth/profile', require('./routes/api/auth/profile'));
 
