@@ -17,21 +17,21 @@ const jwt = require('jsonwebtoken')
 router.get('/', async (req, res, next) => {
     try {
         // Static Methods
-        // const name = req.query.name
+        const word = req.query.word
+        const regex = new RegExp(word, 'i')
         
         const skip = req.query.skip
         const limit = req.query.limit
         
-        const fields = req.query.fields
+        let fields = req.query.fields
         const sort = req.query.sort
-
+        
         const filtro = {}
-
-        // if (message) {
-        //     filtro.message = { $regex: new RegExp(`^${message}`, 'i') }
-        //     const mets = await Met.find().populate('postedBy').sort({dateCreated: -1}).limit(limit).skip(skip)
-        //     res.json(mets) 
-        // }
+        
+        if (word) {
+            const mets = await Met.find({ message: {$regex: regex}}).populate('postedBy').sort({dateCreated: -1}).limit(limit).skip(skip)
+            res.json(mets) 
+        }
 
         if (sort) {
             const mets = await Met.find().populate('postedBy').sort({dateCreated: 1}).limit(limit).skip(skip)
