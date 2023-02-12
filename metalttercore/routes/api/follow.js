@@ -33,6 +33,32 @@ router.get('/', async (req, res, next) => {
 })
 
 
+/// --> GET Dame los mets de los usuarios que sigue este usuario 
+router.get('/mets', async (req, res, next) => {
+    const skip = req.query.skip
+    const limit = req.query.limit
+
+    const token = req.headers['authorization']
+    let user
+    try {
+        user = await getUserByToken(token)
+    } catch (err) {
+        next(err, 'Errorrrrr')
+    }
+    const follows = await Follow.find({user: user.id})
+    const userIds = follows.map(u => u.following)
+
+    const mets = await Met.find({ postedBy: { '$in': userIds } })
+        .populate('postedBy')
+        .sort({dateCreated: -1})
+        .limit(limit)
+        .skip(skip)
+    
+    res.json(mets)
+})
+
+
+
 
 
 
