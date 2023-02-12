@@ -86,22 +86,17 @@ router.delete('/:id', async (req, res, next) => {
     }
 
     const id = req.params.id
+    const followData = { user: user.id, following: id }
 
-    const follow = await Follow.findById(id)
-    console.log('1111',follow)
+    let follow = await Follow.findOne(followData)
     if (!follow) {
-        return next(createError(404, 'Follow no encontrado 1'))
-    }
-
-    const followData = { user: user.id, following: follow.following }
-
-    let userFollowing = await User.findById(follow.following)
-    if (!userFollowing) {
-        next(createError(404, 'User following no encontrado 2'))
+        res.json({})
         return
     }
 
     const followDelete = await Follow.deleteOne(followData)
+
+    const userFollowing = await User.findById(id)
 
     user.totalFollowing--
     userFollowing.totalFollowers--
