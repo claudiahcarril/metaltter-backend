@@ -149,6 +149,16 @@
             "avatar": "/public/images/attila.png",
             "totalFollowers": 5278,
             "totalFollowing": 31
+        },
+        {   
+            "_id": "000000000016",
+            "username": "clauCarril",
+            "name": "Claudia Carril",
+            "email": "clau@claudiacarril.com",
+            "password": "clau",
+            "avatar": "/public/images/clau.JPG",
+            "totalFollowers": 150,
+            "totalFollowing": 0
         }
         
         
